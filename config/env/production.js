@@ -252,7 +252,7 @@ module.exports = {
     ***************************************************************************/
     onlyAllowOrigins: [
        'https://dua-api.herokuapp.com',
-       'http://dua-api.herokuapp.com/',
+       'http://dua-api.truemessage.app',
    ],
 
 
@@ -322,7 +322,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+     trustProxy: true,
 
   },
 

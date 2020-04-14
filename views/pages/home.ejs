@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>Dua API</title>
+    <script>
+    async function handleDeletedua(e) {
+        console.log(e.target.id)
+            const duaId = e.target.id
+            const url = '/dua/' + duaId
+            try {
+                await axios.delete(url)
+                location.reload()
+            } catch (err) {
+                console.error(err.toString())
+                alert(err.toString())
+            }
+            
+        }
+        async function handleFindDua(e) {
+            console.log(e.target.id)
+        }
+
+
+    </script>
+
+    <body style="background-color: rgb(66, 180, 244)">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">Dua API</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+    <!--<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="handleFindDua(event)">Search</button>
+    </form> -->
+
+</nav>
+
+
+
+        <div class="col-6 mx-auto p-3">
+            <% allDuas.forEach(p => {%>
+            <div style="background-color: rgb(179, 228, 177);" class="rounded-lg m-3">
+                <h1 class="p-2"><%= p.dua %></h1> 
+                <h5 class="p-2"><%= p.body %></h5>
+                <button id='<%= p.id %>' onclick="handleDeletedua(event)" class="btn btn-danger m-2">Delete</button>
+            </div>
+            <% }) %>
+        </div>
+
+
+        <form action="/dua" method="POST" class="form-group col-3">
+            <h1>Add Dua</h1>
+            <div class="form-group">
+                <input name="id" type="number" placeholder="Dua Number" class="form-control">
+            </div>
+            <div class="form-group">
+                <input name="dua" type="text" placeholder="Dua Title" class="form-control">
+            </div>
+            <div class="form-group">
+                <input name="body" type="text" placeholder="Dua Body" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        
+    </body>
+</html>
